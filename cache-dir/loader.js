@@ -177,6 +177,7 @@ export class BaseLoader {
       this.loadPageDataJson(pagePath),
     ])
       .then(allData => {
+        console.log({allData, result})
         const result = allData[1]
         if (result.status === `error`) {
           return {
@@ -185,9 +186,10 @@ export class BaseLoader {
         }
         if (result.status === `failure`) {
           // throw an error so error trackers can pick this up
-          throw new Error(
-            `404 page could not be found. Checkout https://www.gatsbyjs.org/docs/add-404-page/`
-          )
+          console.log('would throw 404 Error')
+          // throw new Error(
+          //   `404 page could not be found. Checkout https://www.gatsbyjs.org/docs/add-404-page/`
+          // )
         }
 
         let pageData = result.payload
